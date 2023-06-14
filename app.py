@@ -1,11 +1,11 @@
 from flask import *
-import openai
+from bardapi import Bard
 import os
 from script import engScript, hinScript
 from words import word, word1, definition, definition1
 from tips import random_tip
 
-openai.api_key = os.getenv('OPENAI_API_KEY')
+os.environ["_BARD_API_KEY"] = os.getenv('API_KEY')
 
 app = Flask(__name__)
 
@@ -22,9 +22,9 @@ def result():
     text = request.form['msg']
     userInput = '{}'.format(text)
 
-    #generating response
-    completion = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=[{"role": "user", "content": "compare this sentence '" + userInput +" '" + " with '" + engScript + " ' "+ " and find the areas in which the sentence is wrong with respect to second sentence. Tell in 2-3 lines"}])
-    aiMsg = completion.choices[0].message.content
+    msg = f"compare this sentence '{userInput}' with '{engScript}' and find the areas in which the sentence is wrong with respect to second sentence. Tell in 1-2 lines, reply in only plain text"
+
+    aiMsg = Bard().get_answer(str(msg))['content']
 
     #initliasing words
     r_word = word
