@@ -27,10 +27,11 @@
     nav {
       padding-left: 2%;
       font-size: 2rem;
-      background-color: #fff;
+      background-color: #ffffff;
       font-weight: 900;
       padding-bottom: 1%;
     }
+
 
     .box {
       /* border: 2px solid red; */
@@ -84,6 +85,7 @@
       width: fit-content;
       border-top-right-radius: 10px;
       border-bottom-right-radius: 5px;
+      box-shadow: 4px 3px black;
     }
 
     .h1 {
@@ -101,15 +103,6 @@
       background-color: #ff75b5;
     }
 
-    footer {
-      position: fixed;
-      width: 100%;
-      bottom: 0px;
-      text-align: center;
-      background-color: white;
-      z-index: -1;
-    }
-
     .p-block {
       display: block;
     }
@@ -120,7 +113,7 @@
 </head>
 
 <body>
-  <nav>englang</nav>
+  <nav>fatcat</nav>
 
 
   <p class="h h1">How to use:</p>
@@ -136,16 +129,17 @@
     </p>
 
   </div>
+  
+  <p class="h h2">Grammar Tip</p>
+  <div class="box">
+    <p id="message">{{tip}}</p>
+  </div>
 
-  <p class="h h2">Speech</p>
+  <p class="h h4">Speech</p>
   <div class="box">
     <p id="message">{{translated}}</p>
   </div>
 
-  <p class="h h4">Grammar Tip</p>
-  <div class="box">
-    <p id="message">{{tip}}</p>
-  </div>
 
   <p class="h h3">Record & Send</p>
 
@@ -153,7 +147,7 @@
 
     <button id="record">Record</button>
 
-    <form class="" action="/search" method="post">
+    <form action="/search" method="post">
       <textarea name="msg" id="output" cols="30" rows="10"></textarea>
       <button type="submit">Send</button>
     </form>
