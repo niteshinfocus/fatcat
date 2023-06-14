@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2&display=swap" rel="stylesheet">
+
+    <title>Result</title>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-size: 1.1em;
+            font-family: 'Exo 2','Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            background-color: #f3f1f1;
+
+        }
+
+        nav {
+            background-color: #fff;
+            font-size: 2rem;
+            font-weight: 900;
+            padding-left: 2%;
+            cursor: pointer;
+        }
+
+        /* for feedback in english */
+        .engfeedbackWrapper {
+            display: none;
+            padding: 10px;
+            background-color: #c4f3ff;
+            border: 2px solid #00cbfe;
+            border-radius: 5px;
+            margin-top: 1%;
+        }
+
+        .engfeedback {
+            display: inline-block;
+            padding: 5px 10px;
+            
+            background-color: #00cbfe;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 1% 0%;
+        }
+
+        /* ---------------------------------------------- */
+        /* for speech */
+        .speechWrapper {
+            display: none;
+            padding: 10px;
+            background-color: #ffffcb;
+            border: 2px solid #FFFF00;
+            border-radius: 5px;
+            margin-top: 1%;
+        }
+
+        .yourSpeech {
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: #FFFF00;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 1% 0%;
+        }
+
+        /* ---------------------------------------------- */
+        /* for original script */
+        .scriptWrapper {
+            display: none;
+            padding: 10px;
+            background-color: #d9ffd2;
+            border: 2px solid #51ff9f;
+            border-radius: 5px;
+            margin-top: 1%;
+            margin-bottom: 2%;
+        }
+
+        .script {
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: #51ff9f;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 1% 0%;
+        }
+
+        /* ------------------------------------------ */
+        /* for vocab words */
+        .wordWrap {
+            display: none;
+            padding: 10px;
+            background-color: #ffc5e9;
+            border: 2px solid #FF6EC7;
+            border-radius: 5px;
+            margin-top: 1%;
+            margin-bottom: 2%;
+        }
+
+        .word {
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: #FF6EC7;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 1% 0%;
+        }
+
+        /* ------------------------------------------ */
+        .box {
+            width: 95%;
+            margin: auto;
+            margin-top: 1.5%;
+            margin-bottom: 2%;
+            background-color: white;
+            border-radius: 10px;
+            padding: 2% 3%;
+            box-shadow: 0px 0px 7px grey;
+        }
+
+        footer {
+            position: fixed;
+            width: 100%;
+            bottom: 0px;
+            text-align: center;
+            background-color: white;
+            z-index: -1;
+        }
+
+        div a {
+            display: flex;
+            text-decoration: none;
+        }
+        button{
+            box-shadow: 4px 5px black;
+        }
+    </style>
+</head>
+<body>
+    <nav> englang</nav>
+
+    <div class="box">
+        <button class="yourSpeech">Your Speech [click me]</button>
+        <div class="speechWrapper">
+            <p>{{userInput}}</p>
+        </div>
+    </div>
+
+    <div class="box">
+        <button class="script">Original Script [click me]</button>
+        <div class="scriptWrapper">
+            <p>{{random_script}} </p>
+        </div>
+    </div>
+
+    <div class="box">
+        <button class="engfeedback">Feedback [click me]</button>
+        <div class="engfeedbackWrapper">
+            <p>{{aiMsg}} </p>
+        </div>
+    </div>
+
+    <div class="box">
+        <button class="word">Vocabulary [click me]</button>
+        <div class="wordWrap">
+            <!-- <p>{{word}} </p> -->
+            <p> <b>{{word}}</b> : <i>{{define}}</i> </p>
+            <p> <b>{{word1}}</b> : <i>{{define1}}</i> </p>
+        </div>
+    </div>
+
+
+    <footer> Insta- nitesh.dd | Made with ❤ in
+        Bharat</footer>
+
+</body>
+<script>
+
+    const engfeedbackButton = document.querySelector('.engfeedback');
+    const engfeedbackWrapper = document.querySelector('.engfeedbackWrapper');
+    engfeedbackButton.addEventListener('click', function () {
+        if (engfeedbackWrapper.style.display === 'block') {
+            engfeedbackWrapper.style.display = 'none';
+        } else {
+            engfeedbackWrapper.style.display = 'block';
+        }
+    });
+
+    const yourSpeech = document.querySelector('.yourSpeech');
+    const speechWrapper = document.querySelector('.speechWrapper');
+    yourSpeech.addEventListener('click', function () {
+        if (speechWrapper.style.display === 'block') {
+            speechWrapper.style.display = 'none';
+        } else {
+            speechWrapper.style.display = 'block';
+        }
+    });
+
+    const script = document.querySelector('.script');
+    const scriptWrapper = document.querySelector('.scriptWrapper');
+    script.addEventListener('click', function () {
+        if (scriptWrapper.style.display === 'block') {
+            scriptWrapper.style.display = 'none';
+        } else {
+            scriptWrapper.style.display = 'block';
+        }
+    });
+
+    const word = document.querySelector('.word');
+    const wordWrap = document.querySelector('.wordWrap');
+    word.addEventListener('click', function () {
+        if (wordWrap.style.display === 'block') {
+            wordWrap.style.display = 'none';
+        } else {
+            wordWrap.style.display = 'block';
+        }
+    });
+
+</script>
+
+</html>

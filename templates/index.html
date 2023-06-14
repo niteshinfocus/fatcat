@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2&display=swap" rel="stylesheet">
+  <title>englang</title>
+
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+      font-size: 1.096em;
+      font-family: 'Exo 2', sans-serif;
+    }
+
+    body {
+      background-color: #f0f0f0;
+    }
+
+    nav {
+      padding-left: 2%;
+      font-size: 2rem;
+      background-color: #fff;
+      font-weight: 900;
+      padding-bottom: 1%;
+    }
+
+    .box {
+      /* border: 2px solid red; */
+      margin: auto;
+      width: 97%;
+      display: flex;
+      background-color: #fff;
+      padding: 2% 2%;
+      margin-top: 1%;
+      border-radius: 10px;
+      flex-wrap: wrap;
+      box-shadow: 1px 1px 10px grey;
+      align-items: center;
+      margin-bottom: 2%;
+    }
+
+
+    button {
+      background: none;
+      padding: 1.2% 1.5%;
+      margin: 1% 1.5%;
+      border: 2px solid black;
+      border-radius: 10px;
+      cursor: pointer;
+      width: 100%;
+      margin: auto;
+    }
+
+    textarea {
+      border-radius: 10px;
+      padding: 1% 2%;
+      resize: none;
+      max-height: 20vh;
+      margin-top: 1%;
+      width: 100%;
+    }
+
+    #record {
+      background-color: red;
+      color: white;
+      font-weight: 900;
+      width: 99%;
+      margin: auto;
+    }
+
+    .h {
+      margin-top: 3%;
+      margin-bottom: 1%;
+      padding: 1% 2.5%;
+      font-weight: bold;
+      width: fit-content;
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 5px;
+    }
+
+    .h1 {
+      background-color: #ffbe74;
+    }
+
+    .h2 {
+      background-color: #58ffc7;
+    }
+
+    .h3 {
+      background-color: #c175ff;
+    }
+    .h4 {
+      background-color: #ff75b5;
+    }
+
+    footer {
+      position: fixed;
+      width: 100%;
+      bottom: 0px;
+      text-align: center;
+      background-color: white;
+      z-index: -1;
+    }
+
+    .p-block {
+      display: block;
+    }
+    hr{
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <nav>englang</nav>
+
+
+  <p class="h h1">How to use:</p>
+  <div class="box">
+    <p class="p-block"><b>*</b> Use in Browser only</p>
+    <hr>
+    <p class="p-block">
+      <b>1.</b> Click the <b>"Record"</b> button and Speak the <b>"Speech"</b> in English.
+    </p>
+    <hr>
+    <p class="p-block">
+      <b>2.</b> Correct spelling error and click on <b>"Send"</b> button.
+    </p>
+
+  </div>
+
+  <p class="h h2">Speech</p>
+  <div class="box">
+    <p id="message">{{translated}}</p>
+  </div>
+
+  <p class="h h4">Grammar Tip</p>
+  <div class="box">
+    <p id="message">{{tip}}</p>
+  </div>
+
+  <p class="h h3">Record & Send</p>
+
+  <div class="box">
+
+    <button id="record">Record</button>
+
+    <form class="" action="/search" method="post">
+      <textarea name="msg" id="output" cols="30" rows="10"></textarea>
+      <button type="submit">Send</button>
+    </form>
+
+  </div>
+
+
+
+  <script>
+    // speech recognition
+    const recordButton = document.querySelector('#record');
+    const output = document.querySelector('#output');
+    const recognition = new webkitSpeechRecognition();
+
+    let content = '';
+
+    // recognition.continuous = true;
+
+    recordButton.addEventListener('click', () => {
+      if (content.length) {
+        content += ' '
+      }
+      recognition.start();
+    });
+
+
+    recognition.onresult = function (event) {
+      let current = event.resultIndex;
+      const transcript = event.results[current][0].transcript;
+      content += transcript;
+      console.log(content)
+      output.textContent = content;
+      // recordButton.innerText = 'Record More'
+    }
+    // defining instruction in side button
+    recognition.onstart = function () {
+      recordButton.innerText = 'Recording...'
+    }
+    recognition.onspeechend = function () {
+      recordButton.innerText = 'Record More...'
+    }
+    recognition.onerror = function () {
+      recordButton.innerText = 'Problem with Mic...'
+    }
+  </script>
+</body>
+
+</html>
