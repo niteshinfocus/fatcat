@@ -22,7 +22,7 @@ def result():
     text = request.form['msg']
     userInput = '{}'.format(text)
 
-    msg = f"compare this sentence '{userInput}' with '{engScript}' and find the areas in which the sentence is wrong with respect to second sentence. Tell in 1-2 lines, reply in only plain text"
+    msg = f"compare this sentence '{userInput}' with '{engScript}' and find the areas in which the sentence is wrong with respect to second sentence. Tell in 1-2 lines, reply in only plain text do not generate table"
 
     aiMsg = Bard().get_answer(str(msg))['content']
 
