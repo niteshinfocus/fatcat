@@ -8,7 +8,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Exo+2&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Signika+Negative&display=swap" rel="stylesheet">
 
     <title>Result</title>
 
@@ -18,107 +18,22 @@
             margin: 0;
             box-sizing: border-box;
             font-size: 1.1em;
-            font-family: 'Exo 2', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            background-color: #3a3f47;
+            color: white;
+            font-family: 'Signika Negative', sans-serif;
         }
 
         body {
             height: 100vh;
-            background-color: #f3f1f1;
 
         }
 
         nav {
             padding-left: 2%;
             font-size: 2rem;
-            background-color: #ffffff;
             font-weight: 900;
             padding-bottom: 1%;
-        }
-
-        /* for feedback in english */
-        .engfeedbackWrapper {
-            display: none;
-            padding: 10px;
-            background-color: #c4f3ff;
-            border: 2px solid #00cbfe;
-            border-radius: 5px;
-            margin-top: 1%;
-        }
-
-        .engfeedback {
-            display: inline-block;
-            padding: 5px 10px;
-
-            background-color: #00cbfe;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin: 1% 0%;
-        }
-
-        /* ---------------------------------------------- */
-        /* for speech */
-        .speechWrapper {
-            display: none;
-            padding: 10px;
-            background-color: #ffffcb;
-            border: 2px solid #FFFF00;
-            border-radius: 5px;
-            margin-top: 1%;
-        }
-
-        .yourSpeech {
-            display: inline-block;
-            padding: 5px 10px;
-            background-color: #FFFF00;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin: 1% 0%;
-        }
-
-        /* ---------------------------------------------- */
-        /* for original script */
-        .scriptWrapper {
-            display: none;
-            padding: 10px;
-            background-color: #d9ffd2;
-            border: 2px solid #51ff9f;
-            border-radius: 5px;
-            margin-top: 1%;
-            margin-bottom: 2%;
-        }
-
-        .script {
-            display: inline-block;
-            padding: 5px 10px;
-            background-color: #51ff9f;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin: 1% 0%;
-        }
-
-        /* ------------------------------------------ */
-        /* for vocab words */
-        .wordWrap {
-            display: none;
-            padding: 10px;
-            background-color: #ffc5e9;
-            border: 2px solid #FF6EC7;
-            border-radius: 5px;
-            margin-top: 1%;
-            margin-bottom: 2%;
-        }
-
-        .word {
-            display: inline-block;
-            padding: 5px 10px;
-            background-color: #FF6EC7;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin: 1% 0%;
+            border-bottom: 2px solid grey;
         }
 
         /* ------------------------------------------ */
@@ -127,7 +42,6 @@
             margin: auto;
             margin-top: 1.5%;
             margin-bottom: 2%;
-            background-color: white;
             border-radius: 10px;
             padding: 2% 3%;
             box-shadow: 0px 0px 7px grey;
@@ -150,6 +64,26 @@
         button {
             box-shadow: 4px 5px black;
         }
+        .wrap-btn{
+            display: inline-block;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 1% 0%;
+            background-color: #c4fa6f;
+            color: black;
+            font-weight: bold;
+        }
+        .wrap-box{
+            /* background-color: #e0ffaf; */
+            border: 2px solid #c4fa6f;
+            display: none;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 1%;
+            margin-bottom: 2%;
+        }
     </style>
 </head>
 
@@ -157,29 +91,29 @@
     <nav>englang</nav>
 
     <div class="box">
-        <button class="yourSpeech">Your Speech [click me]</button>
-        <div class="speechWrapper">
+        <button class="yourSpeech wrap-btn">Your Speech [click me]</button>
+        <div class="speechWrapper wrap-box">
             <p>{{userInput}}</p>
         </div>
     </div>
 
     <div class="box">
-        <button class="script">Original Script [click me]</button>
-        <div class="scriptWrapper">
+        <button class="script wrap-btn">Sentence [click me]</button>
+        <div class="scriptWrapper wrap-box">
             <p>{{random_script}} </p>
         </div>
     </div>
 
     <div class="box">
-        <button class="engfeedback">Feedback [click me]</button>
-        <div class="engfeedbackWrapper">
+        <button class="engfeedback wrap-btn">Feedback [click me]</button>
+        <div class="engfeedbackWrapper wrap-box">
             <p>{{aiMsg}} </p>
         </div>
     </div>
 
     <div class="box">
-        <button class="word">Vocabulary [click me]</button>
-        <div class="wordWrap">
+        <button class="word wrap-btn">Vocabulary [click me]</button>
+        <div class="wordWrap wrap-box">
             <!-- <p>{{word}} </p> -->
             <p> <b>{{word}}</b> : <i>{{define}}</i> </p>
             <p> <b>{{word1}}</b> : <i>{{define1}}</i> </p>
