@@ -1,5 +1,4 @@
 import random
-
 my_array = [
     {
         'english':"A traveler approached a holy river and was advised by a wise sage to practice Ahimsa (non-violence) towards all living beings. From that day forward, the traveler vowed to treat every creature with kindness",
@@ -74,8 +73,8 @@ my_array = [
         'hindi':"हम अक्सर अपने कुत्तों के साथ धूप के दिनों में पार्क में टहलने जाते हैं"
     },
     {
-        'english':"He likes to eat dosa on weekends but he hates western junk food.",
-        'hindi':"उन्हें वीकेंड पर डोसा खाना पसंद है लेकिन उन्हें पश्चिमी जंक फूड से नफरत है।"
+        'english':"They like to eat dosa on weekend but hate western junk food.",
+        'hindi':"वे वीकेंड पर डोसा खाना पसंद करते हैं लेकिन पश्चिमी जंक फूड से नफरत करते हैं।"
     },
     {
         'english':"Every morning, I wake up early, do exercise, meditation and drink a fresh cup of milk.",
@@ -108,5 +107,5 @@ randNo = random.randint(0, max-1)
 random_script = my_array[randNo]
 engScript = random_script['english']
 hinScript = random_script['hindi']
-print(engScript)
-print(hinScript)
+# print(engScript)
+# print(hinScript)
